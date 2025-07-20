@@ -2,269 +2,280 @@
 
 A machine learning project that predicts heart disease risk using clinical data from the UCI Cleveland Heart Disease dataset. This end-to-end ML solution includes data analysis, model training, and deployment via Docker and cloud services.
 
-![Project Overview](images/project_banner.png)
-
-*An end-to-end machine learning solution for heart disease prediction*
-
-## 📋 Table of Contents
-
-- [🚨 Problem Statement](#problem-statement)
-- [🎯 Project Goals](#project-goals)
-- [📊 Dataset Information](#dataset-information)
-- [📁 Project Structure](#project-structure)
-- [⚙️ Setup and Installation](#setup-and-installation)
-- [🔍 Exploratory Data Analysis](#exploratory-data-analysis)
-- [🤖 Model Training & Evaluation](#model-training--evaluation)
-- [🚀 Deployment](#deployment)
-- [📈 Results](#results)
-- [🤝 Contributing](#contributing)
-- [📄 License](#license)
+*An end-to-end machine learning solution for heart disease prediction using clinical indicators and streamlined deployment.*
 
 ---
 
-## Problem Statement
+## 🚀 Quick Start
 
-Heart disease remains the biggest killer in the UK - something that really struck me when I started researching this project. We're talking about tens of thousands of deaths each year, and the frustrating bit is that many of these could probably be prevented if we spotted the warning signs earlier.
+### 📍 Live Demo
 
-The trouble is, working out who's going to develop heart problems isn't exactly straightforward. Of course, doctors have ways to test for it, but these tests are costly and take ages. Plus, most people don't even consider getting checked until they're already feeling rough. By that point, you're often dealing with serious damage that could have been avoided altogether.
+**Streamlit App**: [https://heart-disease-predictor-75.streamlit.app/](https://heart-disease-predictor-75.streamlit.app/)
 
-I've been thinking about this problem from a practical angle. What if we could use the information GPs already collect during routine appointments to better predict who's at risk? Rather than waiting for someone to turn up at A&E with chest pains, we could identify potential problems much sooner. This would give doctors and patients a proper chance to take action before things get serious.
+### Run Locally
 
-Using the Cleveland Clinic's dataset of 303 patients with comprehensive medical records, this project builds a predictive model that analyses factors like age, blood pressure, cholesterol levels, and other standard measurements to accurately assess heart disease risk.
+```bash
+# Clone and setup
+git clone https://github.com/isse75/ML_Zoomcamp.git
+cd ML_Zoomcamp/midterm-project
+pip install pipenv
+pipenv install --dev
+pipenv shell
 
-## Project Goals
+# Run Jupyter notebooks (optional)
+jupyter lab
 
-This project fulfils the requirements for the ML Zoomcamp Mid-Term Project by delivering:
-
-- **🔍 Data Analysis**: Comprehensive EDA and data preprocessing
-- **🧠 Model Development**: Training and evaluation of multiple ML algorithms
-- **🐳 Deployment**: Containerised web service using Docker
-- **👥 Accessibility**: User-friendly interfaces for predictions
-- **📚 Reproducibility**: Complete documentation and setup instructions
-
-## Dataset Information
-
-### 💡 Overview
-The **UCI Cleveland Heart Disease Dataset** is a well-known benchmark dataset for heart disease prediction, containing anonymised patient records from the Cleveland Clinic.
-
-### 🔢 Key Details
-- **Source**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/45/heart+disease)
-- **Instances**: 303 patients
-- **Features**: 14 clinical attributes (selected from original 76)
-- **Task**: Binary classification (heart disease present/absent)
-- **Data Types**: Mixed categorical, integer, and real values
-
-### 🩺 Features
-The dataset includes critical medical indicators:
-- **Demographics**: Age, sex
-- **Symptoms**: Chest pain type, exercise-induced angina
-- **Vital Signs**: Resting blood pressure, maximum heart rate
-- **Lab Results**: Cholesterol, fasting blood sugar
-- **Diagnostic Tests**: ECG results, ST depression, vessel fluoroscopy
-- **Conditions**: Thalassemia type
-
-### 🎯 Target Variable
-- **0**: No heart disease
-- **1**: Heart disease present (binarised from original 0-4 scale)
-
-![Target Variable Distribution](images/target_distribution.png)
-
-*Dataset shows balanced distribution between heart disease presence and absence*
-
-## Project Structure
-
+# Streamlit app
+cd streamlit_app/
+streamlit run streamlit_app.py
 ```
-TBD
-```
-
-## Setup and Installation
-
-### Prerequisites
-- Python 3.8+
-- Docker (for containerised deployment)
-- Git
-
-### Local Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/isse75/ML_Zoomcamp.git
-   cd ML_Zoomcamp/midterm-project
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install pipenv
-   pipenv install --dev
-   ```
-
-3. **Activate virtual environment**
-   ```bash
-   pipenv shell
-   ```
-
-4. **Run Jupyter notebooks** (optional)
-   ```bash
-   jupyter lab
-   ```
 
 ### Docker Deployment
 
-**Quick Start:**
 ```bash
+# Pull image
 docker pull issedugou/heart_disease:latest
-docker run -p 9696:9696 your_docker_username/heart_disease:latest
-```
 
-**Build from source:**
-```bash
+# Run container
+docker run -p 9696:9696 issedugou/heart_disease:latest
+
+# Or build from source
 cd app/
 docker build -t heart-disease-api .
 docker run -p 9696:9696 heart-disease-api
 ```
 
-### Streamlit Application
+---
+
+## 📄 Table of Contents
+
+* [📌 Problem Statement](#problem-statement)
+* [🎯 Project Goals](#project-goals)
+* [📊 Dataset Information](#dataset-information)
+* [📁 Project Structure](#project-structure)
+* [⚙️ Setup and Installation](#setup-and-installation)
+* [🔍 Exploratory Data Analysis](#exploratory-data-analysis)
+* [🤖 Model Training & Evaluation](#model-training--evaluation)
+* [🚀 Deployment](#deployment)
+* [📈 Results](#results)
+* [👤 Author](#author)
+* [📄 License](#license)
+
+---
+
+## 📌 Problem Statement
+
+Heart disease remains the leading cause of death in the UK. Many of these deaths are preventable through early diagnosis. However, existing diagnostic tests are costly and underutilised. This project investigates whether routine clinical data collected by GPs can be used to build a predictive model for early risk assessment.
+
+Using the Cleveland Clinic dataset of 303 patients, this project builds a model to analyse medical indicators such as age, cholesterol, chest pain, and blood pressure to predict heart disease risk.
+
+---
+
+## 🎯 Project Goals
+
+* 🔍 Conduct exploratory data analysis (EDA)
+* 🫠 Train and evaluate ML models (focus on Logistic Regression)
+* 📅 Containerise the API with Docker
+* 👥 Create Streamlit frontend for user interaction
+* 📃 Ensure reproducibility and portability across environments
+
+---
+
+## 📊 Dataset Information
+
+### 🔹 Source
+
+* [UCI Heart Disease Dataset](https://archive.ics.uci.edu/dataset/45/heart+disease)
+
+### 🔹 Overview
+
+* 303 patients from the Cleveland Clinic
+* 14 clinical attributes (subset from original 76)
+* Binary target: heart disease present (1) or not (0)
+
+### 🔹 Key Features
+
+* **Demographics**: Age, sex
+* **Symptoms**: Chest pain type, exercise-induced angina
+* **Vitals**: Resting blood pressure, maximum heart rate
+* **Lab Results**: Cholesterol, fasting blood sugar
+* **Diagnostics**: ECG, ST depression, thalassemia, vessel fluoroscopy
+
+### 🔹 Target Variable
+
+* `0`: No heart disease
+* `1`: Heart disease present (binarised)
+
+*Placeholder for target distribution image*
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── data/                    # Data files
+│   └── Heart_disease_cleveland_new.csv
+├── images/                   # Visualisation assets
+├── streamlit_frontend/       # Streamlit frontend
+│   ├── .streamlit/           # Config and secrets
+│   │   ├── config.toml
+│   │   └── secrets.toml
+│   ├── requirements.txt
+│   └── streamlit_app.py
+├── Notebook.ipynb            # EDA and model training
+├── Train.ipynb               # Alternative or legacy notebook
+├── train.py                  # Training script
+├── predict.py                # Inference script
+├── predict-test.py           # Test predictions script
+├── model_C=1.0.bin           # Trained model artefact
+├── Dockerfile                # Docker image definition
+├── Pipfile                   # Pipenv dependency file
+├── Pipfile.lock              # Pipenv lock file
+├── .gitignore
+└── README.md
+```
+
+---
+
+## ⚙️ Setup and Installation
+
+### Prerequisites
+
+* Python 3.8+
+* Docker
+* Git
+
+### Environment Setup
+
+```bash
+# Clone repository
+cd ML_Zoomcamp/midterm-project
+pip install pipenv
+pipenv install --dev
+pipenv shell
+```
+
+### Jupyter Notebook
+
+```bash
+jupyter lab
+```
+
+### Streamlit App
 
 ```bash
 cd streamlit_app/
 streamlit run streamlit_app.py
 ```
 
-Access the app at `[[http://localhost:8501](https://heart-disease-predictor-75.streamlit.app/](https://heart-disease-predictor-75.streamlit.app/))`
+### Docker
 
-## Exploratory Data Analysis
+```bash
+cd app/
+docker build -t heart-disease-api .
+docker run -p 9696:9696 heart-disease-api
+```
 
-The EDA process (`notebook.ipynb`) reveals key insights about the dataset:
+---
 
-### Dataset Overview and Correlations
+## 🔍 Exploratory Data Analysis
 
-![Correlation Heatmap](images/correlation_heatmap.png)
+Conducted in `notebook.ipynb`, the EDA highlights feature correlations and patterns relevant to heart disease prediction.
 
-*Correlation matrix showing relationships between numerical features*
+### Feature Correlation
 
-The correlation analysis reveals important feature relationships that guide our modeling approach.
+*Placeholder for correlation heatmap*
 
-**Target Distribution Analysis**
-- Balanced dataset with roughly equal heart disease presence/absence
-- No significant class imbalance requiring special handling
+### Key Visual Insights
 
-**Categorical Features Analysis**
+* Strong correlation between chest pain type and disease presence
+* Age and max heart rate are significant indicators
+* No severe class imbalance
 
-![Chest Pain Analysis](images/chest_pain_analysis.png)
+*Placeholder for chest pain analysis*
 
-*Chest pain type shows strong correlation with heart disease presence*
+*Placeholder for numerical features distribution*
 
-- Gender, chest pain type, and ECG results show distinct patterns
-- Exercise-induced angina strongly correlates with heart disease
-- Chest pain type emerges as one of the most predictive categorical features
+*Placeholder for age distribution*
 
-**Numerical Features Distribution**
+---
 
-![Numerical Features Distribution](images/numerical_features_dist.png)
+## 🤖 Model Training & Evaluation
 
-*Distribution of key numerical features by heart disease status*
+### Process
 
-- Age distribution spans 29-77 years with normal distribution
-- Cholesterol and blood pressure show typical medical ranges
-- Maximum heart rate varies significantly between patients
+* Train/val/test split: 60/20/20
+* Categorical: One-Hot Encoding via DictVectorizer
+* Model: Logistic Regression with hyperparameter tuning
+* Evaluation: AUC, accuracy, precision, recall, F1
 
-![Age Distribution](images/age_distribution.png)
+### Hyperparameter Tuning
 
-*Age patterns show clear differences between disease groups*
+* Tested C values from 0.001 to 1000
+* Best AUC with C=1.0
 
-**Key Findings**
-- Strong correlation between chest pain type and heart disease
-- Age and maximum heart rate are significant predictors
-- Some features show clear separation between disease/no disease groups
+### Results
 
-## Model Training & Evaluation
+*Placeholder for ROC curve*
 
-### Methodology
+### Feature Importance
 
-**Data Splitting**
-- 60/20/20 split - Training/Validation/Testing 
+*Placeholder for feature importance*
 
-**Feature Engineering**
-- DictVectorizer to perform One-Hot Encoding on Categorical Variables
-- Numerical features used directly
+---
 
-**Model Selection**
-- 5-fold cross-validation for robust evaluation
-- Hyperparameter Tuning to find the Optimal Logistic Regression Function
+## 🚀 Deployment
 
-**Hyperparameter Optimisation**
-- Tested regularisation parameter C: [0.001, 0.01, 0.1, 1, 10, 100, 1000]
-- Selected C=1.0 based on highest mean AUC
-- Used AUC as primary metric for model comparison
+### Streamlit Frontend
 
-![ROC Curve](images/roc_curve.png)
+* Real-time predictions
+* Hosted on Streamlit Cloud
 
-*ROC Curve for final Logistic Regression model. The curve shows good discrimination ability despite some irregularity due to the dataset size (n=303)*
+### Flask API Backend
 
-### Feature Importance Analysis
+* Containerised REST API
+* Deployed via AWS Elastic Beanstalk
 
-![Feature Importance](images/feature_importance.png)
+```bash
+# Docker image info
+issedugou/heart-disease-api:latest
+```
 
-*Most important features for heart disease prediction according to the trained model*
+---
 
-## Deployment
+## 📈 Results
 
-### Live Applications
+*Placeholder for confusion matrix*
 
-**Interactive Streamlit App**
-- User-friendly interface for heart disease prediction
-- Real-time predictions with probability scores
-- **URL**: [https://heart-disease-predictor-75.streamlit.app/] 
+### Metrics
 
-**REST API Service**
-- Flask-based API for programmatic access
-- Deployed on AWS Elastic Beanstalk
-- **Endpoint**: [heart-disease-env.eba-smhahyek.eu-west-1.elasticbeanstalk.com]
-
-### Containerisation
-
-**Docker Benefits**
-- Consistent environment across development and production
-- Simplified deployment and scaling
-- Reproducible builds and dependencies
-
-**Docker Image**
-- **Registry**: `[issedugou/heart-disease-api:latest]`
-- **Base Image**: Python 3.12-slim
-- **Dependencies**: Automatically installed from requirements
-- **Port**: 5000 (Flask default)
-
-## Results
-
-### Model Performance
-
-![Confusion Matrix](images/confusion_matrix.png)
-
-*Confusion matrix showing model predictions vs actual outcomes on test set*
-
-**Performance Metrics:**
-- **Accuracy**: [0.85]%
-- **ROC AUC**: [0.9222]
-- **Precision**: [0.83]
-- **Recall**: [0.91]
-- **F1-Score**: [0.87]
-
-### Key Insights
-
-![Clinical Insights](images/clinical_insights.png)
-
-*Summary of clinical factors most predictive of heart disease*
-
-- **Most Important Features**: Age, Resting Blood Pressure, Cholestrol
-- **Clinical Relevance**: The model identifies chest pain type, maximum heart rate achieved, and ST depression as primary indicators
-- **Deployment Success**: Fully containerised and cloud-deployed with 99.9% uptime
+* Accuracy: 0.85
+* ROC AUC: 0.9222
+* Precision: 0.83
+* Recall: 0.91
+* F1 Score: 0.87
 
 ### Business Impact
-- Enables early risk assessment during routine appointments
-- Reduces dependency on expensive diagnostic tests
-- Supports preventive healthcare initiatives
-- Provides interpretable predictions for medical professionals
 
-## License
+* Early intervention via routine appointment data
+* Reduces need for expensive tests
+* Supports proactive healthcare
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+*Placeholder for clinical insights*
+
+---
+
+## 👤 Author
+
+**Isse Dugou**
+
+* GitHub: [@isse75](https://github.com/isse75)
+* LinkedIn: [Isse Dugou](https://linkedin.com/in/issedugou)
+* Email: [isse.dugou@outlook.com](mailto:isse.dugou@outlook.com)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
