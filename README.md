@@ -106,8 +106,6 @@ Using the Cleveland Clinic dataset of 303 patients, this project builds a model 
 * `0`: No heart disease
 * `1`: Heart disease present (binarised)
 
-*Placeholder for target distribution image*
-
 ---
 
 ## 📁 Project Structure
@@ -142,7 +140,7 @@ Using the Cleveland Clinic dataset of 303 patients, this project builds a model 
 
 ### Prerequisites
 
-* Python 3.8+
+* Python 3.12+
 * Docker
 * Git
 
@@ -181,23 +179,13 @@ docker run -p 9696:9696 heart-disease-api
 
 ## 🔍 Exploratory Data Analysis
 
-Conducted in `notebook.ipynb`, the EDA highlights feature correlations and patterns relevant to heart disease prediction.
+The dataset is relatively balanced in terms of the target classes. Key observations from the exploratory phase include:
 
-### Feature Correlation
+* **Chest pain type** is a strong categorical predictor
+* **Age** and **maximum heart rate** are key continuous features
+* No severe class imbalance is present
 
-*Placeholder for correlation heatmap*
-
-### Key Visual Insights
-
-* Strong correlation between chest pain type and disease presence
-* Age and max heart rate are significant indicators
-* No severe class imbalance
-
-*Placeholder for chest pain analysis*
-
-*Placeholder for numerical features distribution*
-
-*Placeholder for age distribution*
+Correlation and feature distribution analyses revealed that chest pain type, age, and thalassemia have a notable relationship with heart disease status.
 
 ---
 
@@ -212,16 +200,13 @@ Conducted in `notebook.ipynb`, the EDA highlights feature correlations and patte
 
 ### Hyperparameter Tuning
 
+* KFold Cross-validation used for reliable evaluation
 * Tested C values from 0.001 to 1000
-* Best AUC with C=1.0
+* **C = 1** yielded the best average performance
 
-### Results
+### Threshold Selection
 
-*Placeholder for ROC curve*
-
-### Feature Importance
-
-*Placeholder for feature importance*
+* **0.39** selected as optimal threshold for accuracy
 
 ---
 
@@ -246,9 +231,7 @@ issedugou/heart-disease-api:latest
 
 ## 📈 Results
 
-*Placeholder for confusion matrix*
-
-### Metrics
+Final model performance on the test set:
 
 * Accuracy: 0.85
 * ROC AUC: 0.9222
@@ -256,13 +239,7 @@ issedugou/heart-disease-api:latest
 * Recall: 0.91
 * F1 Score: 0.87
 
-### Business Impact
-
-* Early intervention via routine appointment data
-* Reduces need for expensive tests
-* Supports proactive healthcare
-
-*Placeholder for clinical insights*
+**Key insight**: Logistic Regression performed well with stable results. Model confidence is strongest around chest pain, thalassemia type, and age.
 
 ---
 
